@@ -1,4 +1,4 @@
-#QUESTÃO 1
+#QUESTÃO 6
 class Aluno:
     def __init__(self, nome:str, matricula:str):
         self.nome = nome
@@ -18,3 +18,24 @@ class Aluno:
 
     def str(self):
         return f"{self.nome} ({self.matricula}) - media {self.media():.1f}"
+    
+#QUESTÃO 7
+aluno1 = Aluno("Ana","20261234")
+aluno2 = Aluno("Carlos","20261234")
+aluno3 = Aluno("Maria", "20261234")
+
+aluno1.lancar_notas(7)
+aluno1.lancar_notas(8)
+
+aluno2.lancar_notas(5)
+aluno2.lancar_notas(4)
+
+aluno3.lancar_notas(6)
+aluno3.lancar_notas(9)
+
+alunos = [aluno1, aluno2, aluno3]
+
+
+for aluno in alunos:
+    if aluno.aprovado():
+        print(aluno)

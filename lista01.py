@@ -39,3 +39,22 @@ alunos = [aluno1, aluno2, aluno3]
 for aluno in alunos:
     if aluno.aprovado():
         print(aluno)
+
+
+#QUESTÃO 8
+class Retangulo:
+    def __init__(self, base: float, altura: float):
+        self.base = base
+        self.altura = altura
+
+    def area(self) -> float:
+        return self.base * self.altura
+
+    def perimetro(self) -> float:
+        return 2 * (self.base + self.altura)
+
+    def __eq__(self, outro) -> bool:
+        if not isinstance(outro, Retangulo):
+            return False
+
+        return self.base == outro.base and self.altura == outro.altura

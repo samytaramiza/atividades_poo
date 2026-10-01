@@ -58,8 +58,87 @@ print(email1.endereco)
 email2 = Email("maria@email.com")
 print(email2.endereco)
 print(email2.endereco)
-"""
+
 # Questão 8
+try:
+    funcionario = Funcionario("João", 1500)
+except SalarioInvalidoError as erro:
+    print(erro)
 
 
+funcionario = Funcionario("João", 2000)
+
+try:
+    funcionario.aumentar(40)
+except PercentualInvalidoError as erro:
+    print(erro)
+
+
+# Teste 3 - e-mail inválido
+try:
+    email = Email("teste.com")
+except EmailInvalidoError as erro:
+    print(erro)
+
+
+try:
+    email = Email("testegmail.com")
+except EmailInvalidoError as erro:
+    print(erro)
+"""
 # Questão 9
+class ErroDeConta(Exception): pass
+class ValorInvalidoError(ErroDeConta): pass
+class SaldoInsuficienteError(ErroDeConta): pass
+class LimiteExcedidoError(ErroDeConta): pass
+
+class ContaBancaria:
+    def __init__(self, titular):
+        self.titular = titular
+        self._saldo = 0
+
+    @property
+    def saldo(self):
+        return self._saldo
+
+    def depositar(self, valor):
+        if valor <= 0:
+            raise ValorInvalidoError("Valor de depósito inválido.")
+        self._saldo += valor
+
+    def sacar(self, valor):
+        if valor <= 0:
+            raise ValorInvalidoError("Valor de saque inválido.")
+
+        if valor > 1000:
+            raise LimiteExcedidoError(
+                "O limite de saque por operação é R$ 1.000."
+            )
+
+        if valor > self._saldo:
+            raise SaldoInsuficienteError("Saldo insuficiente.")
+
+        self._saldo -= valor
+
+conta = ContaBancaria("João")
+
+try:
+    conta.depositar(500)
+    print(f"Saldo: R$ {conta.saldo:.2f}")
+
+    conta.sacar(200)
+    print(f"Saldo: R$ {conta.saldo:.2f}")
+
+    conta.sacar(2000)
+
+except ValorInvalidoError as erro:
+    print(erro)
+
+except SaldoInsuficienteError as erro:
+    print(erro)
+
+except LimiteExcedidoError as erro:
+    print(erro)
+
+
+# Questão 10

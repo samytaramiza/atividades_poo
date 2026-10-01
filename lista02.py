@@ -139,6 +139,47 @@ except SaldoInsuficienteError as erro:
 
 except LimiteExcedidoError as erro:
     print(erro)
-
-
+    
 # Questão 10
+conta = ContaBancaria("João")
+
+while True:
+    print("\n1 - Depositar")
+    print("2 - Sacar")
+    print("3 - Saldo")
+    print("4 - Sair")
+
+    try:
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            valor = float(input("Valor do depósito: "))
+            conta.depositar(valor)
+            print("Depósito realizado com sucesso.")
+
+        elif opcao == "2":
+            valor = float(input("Valor do saque: "))
+            conta.sacar(valor)
+            print("Saque realizado com sucesso.")
+
+        elif opcao == "3":
+            print(f"Saldo: R$ {conta.saldo:.2f}")
+
+        elif opcao == "4":
+            print("Programa encerrado.")
+            break
+
+        else:
+            print("Opção inválida.")
+
+    except ValorInvalidoError as erro:
+        print(f"Erro: {erro}")
+
+    except SaldoInsuficienteError as erro:
+        print(f"Erro: {erro}")
+
+    except LimiteExcedidoError as erro:
+        print(f"Erro: {erro}")
+
+    except ValueError:
+        print("Digite um valor válido.")

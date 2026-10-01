@@ -1,5 +1,5 @@
 # Questão 6
-class SalarioInvalidoError(Exception): pass
+"""class SalarioInvalidoError(Exception): pass
 class PercentualInvalidoError(Exception): pass
 
 class Funcionario:
@@ -32,15 +32,34 @@ print(f"Salário de {funcionario1.nome}: {funcionario1.salario}")
 
 funcionario2 = Funcionario("Maria", 2500)
 print(f"Salário de {funcionario2.nome}: {funcionario2.salario}")
-funcionario2.aumentar(10)  # Levanta PercentualInvalidoError
+funcionario2.aumentar(10)
 
 # Questão 7
+class EmailInvalidoError(Exception): pass
 
+class Email:
+    def __init__(self, endereco):
+        self.endereco = endereco
 
+    @property
+    def endereco(self):
+        return self._endereco
+
+    @endereco.setter
+    def endereco(self, valor):
+        if "@" not in valor or "." not in valor:
+            raise EmailInvalidoError("Endereço de e-mail inválido.")
+        self._endereco = valor
+
+email1 = Email("joao@email.com")
+email1.endereco = "joao@email.com"
+print(email1.endereco)
+
+email2 = Email("maria@email.com")
+print(email2.endereco)
+print(email2.endereco)
+"""
 # Questão 8
 
 
 # Questão 9
-
-
-# Questão 10

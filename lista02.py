@@ -1,5 +1,5 @@
 # Questão 6
-"""class SalarioInvalidoError(Exception): pass
+class SalarioInvalidoError(Exception): pass
 class PercentualInvalidoError(Exception): pass
 
 class Funcionario:
@@ -85,7 +85,7 @@ try:
     email = Email("testegmail.com")
 except EmailInvalidoError as erro:
     print(erro)
-"""
+
 # Questão 9
 class ErroDeConta(Exception): pass
 class ValorInvalidoError(ErroDeConta): pass
